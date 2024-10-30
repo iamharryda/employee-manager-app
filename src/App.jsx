@@ -3,7 +3,6 @@ import EmployeeList from './components/EmployeeList'
 import Footers from './components/footer'
 import Headers from './components/header'
 
-
 function App() {
 
   return (
@@ -13,7 +12,7 @@ function App() {
         <h1>Employee Dashboard</h1>
         <EmployeeList></EmployeeList>
       </div>
-      <Footers></Footers> 
+      <Footers></Footers>
     </>
   )
 }
