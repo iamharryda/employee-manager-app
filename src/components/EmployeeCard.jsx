@@ -3,18 +3,17 @@ import { useState } from 'react'
 
 export default function Employee(props) {
 
-    let buttona = "Promote"
-
     const [role, setRole] = useState(props.initRole)
+    const [changeRole, setChangeRole] = useState(role)
 
     const clickHandler = () => {
         if (role == "Teacher") {
             setRole("Team Leader")
-            buttona = "Demote"
+            setChangeRole("Demote")
         }
         else {
             setRole("Teacher")
-            buttona = "Promote"
+            setChangeRole("Promote")
         }
     }
 
@@ -26,7 +25,8 @@ export default function Employee(props) {
             <p>Department: {props.department}</p>
             <p>Location: {props.location}</p>
             <p>Salary: {props.salary}</p>
-            <button onClick={clickHandler}>{buttona}</button>
+            <p>StartDate: {props.startDate}</p>
+            <button onClick={clickHandler}>{changeRole}</button>
         </div>
     )
 }

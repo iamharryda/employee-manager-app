@@ -11,14 +11,8 @@ export default function EmployeeList() {
         <div>
             <h2>Employee List</h2>
             <div className='list'>
-                <Employee name="Sayeed" initRole="Teacher" department="ICT" location="Helsinki" salary="6000€" />
-                <Employee name="Sayeed" initRole="Teacher" department="ICT" location="Helsinki" salary="6000€" />
-                <Employee name="Sayeed" initRole="Teacher" department="ICT" location="Helsinki" salary="6000€" />
-                <Employee name="Sayeed" initRole="Teacher" department="ICT" location="ICT" salary="6000€" />
-                <Employee name="Sayeed" initRole="Teacher" department="ICT" location="ICT" salary="6000€" />
-                <Employee name="Sayeed" initRole="Teacher" department="ICT" location="ICT" salary="6000€" />
-                <Employee name="Sayeed" initRole="Teacher" department="ICT" location="ICT" salary="6000€" />
-                <Employee name="Sayeed" initRole="Teacher" department="ICT" location="ICT" salary="6000€" />
+                <Employee name="Sayeed" initRole="Teacher" department="ICT" location="Helsinki" salary="6000€" StartDate="15-01-2020" />
+
             </div>
         </div>
 
