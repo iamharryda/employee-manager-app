@@ -1,11 +1,10 @@
 import './EmployeeCard.css'
 import { useState } from 'react'
-import employees from '../data/employeeData'
 
 export default function Employee(props) {
 
-    const [role, setRole] = useState(props.initRole)
-    const [changeRole, setChangeRole] = useState(role)
+
+    /* const [changeRole, setChangeRole] = useState(role)
 
     const clickHandler = () => {
         if (role == "Teacher") {
@@ -16,16 +15,19 @@ export default function Employee(props) {
             setRole("Teacher")
             setChangeRole("Promote")
         }
-    }
+    } */
 
 
     return (
         <div>
+            <p>id: {props.id}</p>
             <p>Name: {props.name}</p>
             <p>Role: {props.role}</p>
             <p>Department: {props.department}</p>
-            <p>Start Date:: {props.startDate}</p>
+            <p>Start Date: {props.startDate}</p>
             <p>Location: {props.location}</p>
+            <button>{props.button}</button>
+
         </div>
     )
 }
