@@ -1,5 +1,6 @@
 import './EmployeeCard.css'
 import { useState } from 'react'
+import employees from '../data/employeeData'
 
 export default function Employee(props) {
 
@@ -19,14 +20,12 @@ export default function Employee(props) {
 
 
     return (
-        <div className='card'>
-            <h3>Employee Name: {props.name}</h3>
-            <p>Role: {role}</p>
+        <div>
+            <p>Name: {props.name}</p>
+            <p>Role: {props.role}</p>
             <p>Department: {props.department}</p>
+            <p>Start Date:: {props.startDate}</p>
             <p>Location: {props.location}</p>
-            <p>Salary: {props.salary}</p>
-            <p>StartDate: {props.startDate}</p>
-            <button onClick={clickHandler}>{changeRole}</button>
         </div>
     )
 }
