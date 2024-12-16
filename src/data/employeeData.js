@@ -4,7 +4,7 @@ const employees = [
     {
         id: 1,
         name: "John Doe",
-        role: "Developer",
+        role: "Web Developer",
         department: "Engineering",
         startDate: "2020-01-15",
         location: "New York"
@@ -12,7 +12,7 @@ const employees = [
     {
         id: 2,
         name: "Jane Smith",
-        role: "Designer",
+        role: "Web Developer",
         department: "Creative",
         startDate: "2019-03-22",
         location: "San Francisco"
@@ -20,7 +20,7 @@ const employees = [
     {
         id: 3,
         name: "Michael Johnson",
-        role: "Manager",
+        role: "Team Lead",
         department: "Operations",
         startDate: "2018-06-30",
         location: "Chicago"
@@ -28,7 +28,7 @@ const employees = [
     {
         id: 4,
         name: "Emily Davis",
-        role: "Analyst",
+        role: "Game Developer",
         department: "Finance",
         startDate: "2021-02-10",
         location: "Boston"
@@ -36,7 +36,7 @@ const employees = [
     {
         id: 5,
         name: "Chris Brown",
-        role: "Support",
+        role: "Web Developer",
         department: "Customer Service",
         startDate: "2020-11-05",
         location: "Los Angeles"
@@ -44,7 +44,7 @@ const employees = [
     {
         id: 6,
         name: "Sarah Wilson",
-        role: "Engineer",
+        role: "Game Developer",
         department: "IT",
         startDate: "2017-09-12",
         location: "Seattle"
@@ -52,7 +52,7 @@ const employees = [
     {
         id: 7,
         name: "David Martinez",
-        role: "Sales",
+        role: "Web Developer",
         department: "Marketing",
         startDate: "2019-05-18",
         location: "Miami"
@@ -60,7 +60,7 @@ const employees = [
     {
         id: 8,
         name: "Laura Garcia",
-        role: "HR",
+        role: "Web Developer",
         department: "Human Resources",
         startDate: "2022-04-25",
         location: "Austin"
@@ -68,7 +68,7 @@ const employees = [
     {
         id: 9,
         name: "Daniel Lee",
-        role: "Intern",
+        role: "Game Developer",
         department: "Development",
         startDate: "2023-01-10",
         location: "Denver"
@@ -76,7 +76,7 @@ const employees = [
     {
         id: 10,
         name: "Sophia Kim",
-        role: "Coordinator",
+        role: "Web Developer",
         department: "Administration",
         startDate: "2021-07-19",
         location: "Philadelphia"

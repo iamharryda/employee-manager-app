@@ -1,6 +1,16 @@
 .card{
     padding: 15px;
-    border: 2px solid salmon;
+    border: 2px solid #cbcbcb;
     margin: 15px;
     border-radius: 15px;
+    position: relative;
+
 }
+
+.star{
+    position: absolute;
+    top: 2rem;
+    right: 3rem;
+
+}
+
