@@ -12,7 +12,7 @@ export default function Employee({
     startDate,
     location,
     button,
-    onUpdate,
+    onUpdate, // Callback function to update parent state
 }) {
     const [isPromoted, setIsPromoted] = useState(false);
     const [buttonText, setButtonText] = useState(button);
@@ -22,15 +22,20 @@ export default function Employee({
         department,
         location,
     });
-    const [reminderText, setReminderText] = useState('');
+
+    const [showTooltip, setShowTooltip] = useState(false); // Show/hide tooltip
+    const [reminderText, setReminderText] = useState(''); // Tooltip text
 
     // Handle input changes
     const handleInputChange = (e) => {
         const { name, value } = e.target;
-        setFormData((prev) => ({ ...prev, [name]: value }));
+        setFormData((prev) => ({
+            ...prev,
+            [name]: value,
+        }));
     };
 
-    // Save changes
+    // Handle save button mechanism
     const handleSave = async () => {
         try {
             const updatedFields = { ...formData };
@@ -42,44 +47,68 @@ export default function Employee({
         }
     };
 
-    // Promotion handler
+    // Handle promotion button
     const clickHandler = () => {
         setIsPromoted(!isPromoted);
         setButtonText(isPromoted ? 'promote' : 'demote');
     };
 
-    // Calculate reminders
+    const buttonRole = isPromoted ? 'primary' : 'secondary';
+
+    // Calculate years worked, 6-month review, and probation reminders
     const calculateReminder = () => {
         const start = new Date(startDate);
         const now = new Date();
-        const sixMonths = new Date(start);
-        sixMonths.setMonth(sixMonths.getMonth() + 6);
-
         const yearsWorked = now.getFullYear() - start.getFullYear();
-        const sixMonthReview = now >= sixMonths ? '6-month review completed' : '6-month review pending';
-        const workAnniversary = yearsWorked > 0 ? `Work anniversary: ${yearsWorked} year(s)` : 'No anniversaries yet';
 
-        setReminderText(`${sixMonthReview}\n${workAnniversary}`);
+        const sixMonthsDate = new Date(start);
+        sixMonthsDate.setMonth(sixMonthsDate.getMonth() + 6);
+        const sixMonthsCompleted = now >= sixMonthsDate;
+
+        const anniversary =
+            yearsWorked > 0 ? `Work anniversary: ${yearsWorked} year(s)` : 'No anniversaries yet';
+        const probationReview =
+            yearsWorked < 1
+                ? sixMonthsCompleted
+                    ? '6-month review completed'
+                    : '6-month review pending'
+                : 'No probation review';
+
+        setReminderText(`${anniversary}\n${probationReview}`);
     };
 
     return (
-        <div className="card">
-            {isPromoted && <img className="star" src={star} alt="star icon" />}
+        <div className="card" style={{ position: 'relative' }}>
             <img src={`https://robohash.org/${name}?set=set5`} alt="" />
-            <h2>{name}</h2>
+            <h2>Name: {name}</h2>
             {toggleFormEdit ? (
                 <div>
                     <label>
                         Role:
-                        <input type="text" name="role" value={formData.role} onChange={handleInputChange} />
+                        <input
+                            type="text"
+                            name="role"
+                            value={formData.role}
+                            onChange={handleInputChange}
+                        />
                     </label>
                     <label>
                         Department:
-                        <input type="text" name="department" value={formData.department} onChange={handleInputChange} />
+                        <input
+                            type="text"
+                            name="department"
+                            value={formData.department}
+                            onChange={handleInputChange}
+                        />
                     </label>
                     <label>
                         Location:
-                        <input type="text" name="location" value={formData.location} onChange={handleInputChange} />
+                        <input
+                            type="text"
+                            name="location"
+                            value={formData.location}
+                            onChange={handleInputChange}
+                        />
                     </label>
                 </div>
             ) : (
@@ -90,21 +119,51 @@ export default function Employee({
                 </div>
             )}
             <p>Start Date: {startDate}</p>
+            {isPromoted ? <p><img className="star" src={star} alt="star icon" /></p> : <p></p>}
 
-            {/* Reminder Button with Icon */}
-            <button
-                className="reminder-btn"
-                onMouseEnter={calculateReminder}
-                title={reminderText || 'Hover to see reminders'}
-            >
-                🔔
-            </button>
-
+            {/* Edit Button */}
             <Button
-                onClick={() => (toggleFormEdit ? handleSave() : setToggleFormEdit(true))}
+                onClick={() => {
+                    if (toggleFormEdit) {
+                        handleSave();
+                    } else {
+                        setToggleFormEdit(true);
+                    }
+                }}
                 text={toggleFormEdit ? 'Save' : 'Edit'}
             />
-            <Button onClick={clickHandler} text={buttonText} role={isPromoted ? 'primary' : 'secondary'} />
+            <Button onClick={clickHandler} text={buttonText} role={buttonRole} />
+
+            {/* Reminder Button with Custom Tooltip */}
+            <div
+                onMouseEnter={() => {
+                    calculateReminder();
+                    setShowTooltip(true);
+                }}
+                onMouseLeave={() => setShowTooltip(false)}
+                style={{ position: 'relative', marginTop: '10px', display: 'inline-block' }}
+            >
+                <Button text="Reminders" />
+
+                {showTooltip && (
+                    <div
+                        style={{
+                            position: 'absolute',
+                            top: '40px',
+                            left: '0',
+                            backgroundColor: 'rgba(0, 0, 0, 0.8)',
+                            color: 'white',
+                            padding: '10px',
+                            borderRadius: '5px',
+                            fontSize: '12px',
+                            whiteSpace: 'pre-line',
+                            zIndex: 100,
+                        }}
+                    >
+                        {reminderText}
+                    </div>
+                )}
+            </div>
         </div>
     );
 }

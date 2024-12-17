@@ -1,12 +1,13 @@
 import './EmployeeList.css';
 import Employee from './EmployeeCard';
+import Login from '../pages/Login';
 import { useEffect, useState } from 'react';
 import Button from './Button';
 import axios from 'axios';
 
 export default function EmployeeList() {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
-    const [persons, setPersons] = useState([]); // Employees list
+    const [persons, setPersons] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
 
     // Fetch data from the backend
@@ -19,12 +20,18 @@ export default function EmployeeList() {
             .catch((error) => {
                 console.error('Error fetching data', error);
             })
-            .finally(() => setIsLoading(false));
+            .finally(() => {
+                setIsLoading(false);
+            });
     }, []);
 
     // Handle login toggle
-    const handleLoggedIn = () => {
-        setIsLoggedIn(!isLoggedIn);
+    const handleLoginSuccess = () => {
+        setIsLoggedIn(true);
+    };
+
+    const handleLogout = () => {
+        setIsLoggedIn(false);
     };
 
     // Update a specific employee in the state after editing
@@ -35,37 +42,36 @@ export default function EmployeeList() {
     };
 
     return (
-        isLoggedIn ? (
-            <div>
-                <div>Please log in to see the Employee DATA. IT'S confidential.</div>
+        <div>
+            {!isLoggedIn ? (
+                <Login onLogin={handleLoginSuccess} />
+            ) : (
                 <div>
-                    <Button onClick={handleLoggedIn} text="Log In" />
+                    <h2>Employee Dashboard</h2>
+                    <div className="list">
+                        {isLoading ? (
+                            <p>Loading......</p>
+                        ) : (
+                            persons.map((employee) => (
+                                <Employee
+                                    key={employee.id}
+                                    id={employee.id}
+                                    name={employee.name}
+                                    role={employee.role}
+                                    department={employee.department}
+                                    startDate={employee.startDate}
+                                    location={employee.location}
+                                    button="promote"
+                                    onUpdate={handleUpdateEmployee} // Pass callback to update employee
+                                />
+                            ))
+                        )}
+                    </div>
+                    <div style={{ marginTop: '10px' }}>
+                        <Button onClick={handleLogout} text="Log Out" />
+                    </div>
                 </div>
-            </div>
-        ) : (
-            <div>
-                <h2>Employee Dashboard</h2>
-                <div className="list">
-                    {isLoading ? (
-                        <p>Loading......</p>
-                    ) : (
-                        persons.map((element) => (
-                            <Employee
-                                key={element.id}
-                                id={element.id}
-                                name={element.name}
-                                role={element.role}
-                                department={element.department}
-                                startDate={element.startDate}
-                                location={element.location}
-                                button="promote"
-                                onUpdate={handleUpdateEmployee} // Pass callback to Employee
-                            />
-                        ))
-                    )}
-                </div>
-                <Button onClick={handleLoggedIn} text="Log Out" />
-            </div>
-        )
+            )}
+        </div>
     );
 }
