@@ -1,8 +1,49 @@
-.header{
-    background-color: #25631a;
-    width: 80vw;
-    height: 200px;
+/* Header.css */
+.header {
+    background-color: #4CAF50; /* Primary green */
+    color: #fff;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
+    padding: 15px 30px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.header h1 {
+    margin: 0;
+    font-size: 1.8rem;
+    font-family: 'Arial', sans-serif;
+    letter-spacing: 1px;
+}
+
+.header nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 20px;
+}
+
+.header nav ul li {
+    display: inline;
+}
+
+.header nav ul li a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 1.1rem;
+    font-weight: 600;
+    transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.header nav ul li a:hover {
+    color: #ffeb3b; /* Yellow hover effect */
+    transform: scale(1.1);
+}
+
+.header nav ul li a:active {
+    color: #f44336; /* Red active link */
 }

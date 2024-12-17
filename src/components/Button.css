@@ -1,0 +1,36 @@
+/* Button.css */
+button {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+button.primary {
+    background-color: #4CAF50; /* Primary green */
+}
+
+button.secondary {
+    background-color: #f44336; /* Secondary red */
+}
+
+button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.2);
+    opacity: 0.9;
+}
+
+button:active {
+    transform: translateY(0px);
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+    opacity: 1;
+}

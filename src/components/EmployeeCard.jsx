@@ -1,73 +1,110 @@
-import './EmployeeCard.css'
-import { useState } from 'react'
-import star from '/Users/s2400057/Documents/my_studies/employee-manager-app/src/components/star.png'
-import employees from '../data/employeeData'
-import Button from './Button'
-import Form from '../Forms/Form'
+import './EmployeeCard.css';
+import { useState } from 'react';
+import star from '/Users/s2400057/Documents/my_studies/employee-manager-app/src/components/star.png';
+import Button from './Button';
+import axios from 'axios';
 
-
-export default function Employee({ name, role, department, startDate, location, button }) {
-
-    const [isPromoted, setIsPromoted] = useState(false)
-    const [buttonText, setButtonText] = useState(button)
-    const [toggleFormEdit, setToggleFormEdit] = useState(false)
-
-
-
-
-    employees.forEach((employee) => {
-        const dateString = employee.startDate;
-        const startDate = new Date(dateString);
-        const currentYear = new Date().getFullYear();
-        const yearDiff = currentYear - startDate.getFullYear();
-
-        const currentMonth = new Date().getMonth() + 1;
-        const monthDiff = currentMonth - (startDate.getMonth() + 1);
-
-        /* // yearDiff and monthDiff 
-        console.log(`Employee: ${employee.name}, Year Difference: ${yearDiff}, Month Difference: ${monthDiff}`); */
+export default function Employee({
+    id,
+    name,
+    role,
+    department,
+    startDate,
+    location,
+    button,
+    onUpdate,
+}) {
+    const [isPromoted, setIsPromoted] = useState(false);
+    const [buttonText, setButtonText] = useState(button);
+    const [toggleFormEdit, setToggleFormEdit] = useState(false);
+    const [formData, setFormData] = useState({
+        role,
+        department,
+        location,
     });
+    const [reminderText, setReminderText] = useState('');
 
+    // Handle input changes
+    const handleInputChange = (e) => {
+        const { name, value } = e.target;
+        setFormData((prev) => ({ ...prev, [name]: value }));
+    };
 
+    // Save changes
+    const handleSave = async () => {
+        try {
+            const updatedFields = { ...formData };
+            const response = await axios.patch(`http://localhost:3002/persons/${id}`, updatedFields);
+            onUpdate(id, response.data);
+            setToggleFormEdit(false);
+        } catch (error) {
+            console.error('Error updating employee:', error);
+        }
+    };
 
-
-
+    // Promotion handler
     const clickHandler = () => {
-        setIsPromoted(!isPromoted)
-        setButtonText(isPromoted ? "promote" : "demote")
-    }
+        setIsPromoted(!isPromoted);
+        setButtonText(isPromoted ? 'promote' : 'demote');
+    };
 
-    const buttonRole = isPromoted ? "primary" : "secondary"
+    // Calculate reminders
+    const calculateReminder = () => {
+        const start = new Date(startDate);
+        const now = new Date();
+        const sixMonths = new Date(start);
+        sixMonths.setMonth(sixMonths.getMonth() + 6);
 
+        const yearsWorked = now.getFullYear() - start.getFullYear();
+        const sixMonthReview = now >= sixMonths ? '6-month review completed' : '6-month review pending';
+        const workAnniversary = yearsWorked > 0 ? `Work anniversary: ${yearsWorked} year(s)` : 'No anniversaries yet';
+
+        setReminderText(`${sixMonthReview}\n${workAnniversary}`);
+    };
 
     return (
-        <div className='card'>
+        <div className="card">
+            {isPromoted && <img className="star" src={star} alt="star icon" />}
             <img src={`https://robohash.org/${name}?set=set5`} alt="" />
-            <h2>Name: {name}</h2>
-            {toggleFormEdit ?
-                <Form role={role} department={department} location={location}>
-
-                </Form>
-                :
+            <h2>{name}</h2>
+            {toggleFormEdit ? (
                 <div>
-                    <p>role: {role}</p>
-                    <p>department: {department}</p>
-                    <p>location: {location}</p>
+                    <label>
+                        Role:
+                        <input type="text" name="role" value={formData.role} onChange={handleInputChange} />
+                    </label>
+                    <label>
+                        Department:
+                        <input type="text" name="department" value={formData.department} onChange={handleInputChange} />
+                    </label>
+                    <label>
+                        Location:
+                        <input type="text" name="location" value={formData.location} onChange={handleInputChange} />
+                    </label>
                 </div>
-
-            }
+            ) : (
+                <div>
+                    <p>Role: {formData.role}</p>
+                    <p>Department: {formData.department}</p>
+                    <p>Location: {formData.location}</p>
+                </div>
+            )}
             <p>Start Date: {startDate}</p>
-            {isPromoted ?
 
-                <p><img className='star' src={star} alt="star icon" /></p>
-                :
-                <p></p>
-            }
-            <Button onClick={() => setToggleFormEdit(!toggleFormEdit)} text={toggleFormEdit ? "save" : "edit"}></Button>
+            {/* Reminder Button with Icon */}
+            <button
+                className="reminder-btn"
+                onMouseEnter={calculateReminder}
+                title={reminderText || 'Hover to see reminders'}
+            >
+                🔔
+            </button>
 
-            <Button onClick={clickHandler} text={buttonText} role={buttonRole}></Button>
-
-
-        </div >
-    )
+            <Button
+                onClick={() => (toggleFormEdit ? handleSave() : setToggleFormEdit(true))}
+                text={toggleFormEdit ? 'Save' : 'Edit'}
+            />
+            <Button onClick={clickHandler} text={buttonText} role={isPromoted ? 'primary' : 'secondary'} />
+        </div>
+    );
 }
