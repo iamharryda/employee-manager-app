@@ -1,0 +1,46 @@
+.single-page {
+    padding: 20px;
+    text-align: center;
+}
+
+.employee-details {
+    display: inline-block;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background-color: #f9f9f9;
+    text-align: left;
+    max-width: 400px;
+    margin: auto;
+}
+
+.employee-details img {
+    width: 150px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+.employee-details h2 {
+    margin-bottom: 10px;
+    font-size: 1.8rem;
+}
+
+.employee-details p {
+    font-size: 1.1rem;
+    margin: 5px 0;
+}
+
+button {
+    margin-top: 20px;
+    padding: 8px 12px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}

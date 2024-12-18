@@ -16,11 +16,11 @@ button {
 }
 
 button.primary {
-    background-color: #4CAF50; /* Primary green */
+    background-color: #f44336; /* Primary green */
 }
 
 button.secondary {
-    background-color: #f44336; /* Secondary red */
+    background-color: #4CAF50; /* Secondary red */
 }
 
 button:hover {
@@ -33,4 +33,13 @@ button:active {
     transform: translateY(0px);
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
     opacity: 1;
+}
+
+.reminder-btn{
+    position: absolute;
+    box-shadow: none;
+    z-index: 200;
+    bottom: 130px;
+    left: -50px;
+    background-color: transparent;
 }

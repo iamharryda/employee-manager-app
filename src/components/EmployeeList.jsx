@@ -1,14 +1,14 @@
 import './EmployeeList.css';
 import Employee from './EmployeeCard';
-import Login from '../pages/Login';
 import { useEffect, useState } from 'react';
 import Button from './Button';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 export default function EmployeeList() {
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [persons, setPersons] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
+    const navigate = useNavigate();
 
     // Fetch data from the backend
     useEffect(() => {
@@ -25,14 +25,6 @@ export default function EmployeeList() {
             });
     }, []);
 
-    // Handle login toggle
-    const handleLoginSuccess = () => {
-        setIsLoggedIn(true);
-    };
-
-    const handleLogout = () => {
-        setIsLoggedIn(false);
-    };
 
     // Update a specific employee in the state after editing
     const handleUpdateEmployee = (id, updatedEmployee) => {
@@ -43,35 +35,31 @@ export default function EmployeeList() {
 
     return (
         <div>
-            {!isLoggedIn ? (
-                <Login onLogin={handleLoginSuccess} />
-            ) : (
-                <div>
-                    <h2>Employee Dashboard</h2>
-                    <div className="list">
-                        {isLoading ? (
-                            <p>Loading......</p>
-                        ) : (
-                            persons.map((employee) => (
-                                <Employee
-                                    key={employee.id}
-                                    id={employee.id}
-                                    name={employee.name}
-                                    role={employee.role}
-                                    department={employee.department}
-                                    startDate={employee.startDate}
-                                    location={employee.location}
-                                    button="promote"
-                                    onUpdate={handleUpdateEmployee} // Pass callback to update employee
-                                />
-                            ))
-                        )}
-                    </div>
-                    <div style={{ marginTop: '10px' }}>
-                        <Button onClick={handleLogout} text="Log Out" />
-                    </div>
+            <div>
+                <h2>Employee Dashboard</h2>
+                <div className="list">
+                    {isLoading ? (
+                        <p>Loading......</p>
+                    ) : (
+                        persons.map((employee) => (
+                            <Employee
+                                key={employee.id}
+                                id={employee.id}
+                                name={employee.name}
+                                role={employee.role}
+                                department={employee.department}
+                                startDate={employee.startDate}
+                                location={employee.location}
+                                button="promote"
+                                onUpdate={handleUpdateEmployee} // Pass callback to update employee
+                            />
+                        ))
+                    )}
                 </div>
-            )}
+                <div style={{ marginTop: '10px' }}>
+                    <Button onClick={() => navigate('/')} text="Log Out" />
+                </div>
+            </div>
         </div>
     );
 }

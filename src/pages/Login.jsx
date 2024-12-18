@@ -1,49 +1,45 @@
-import { useState } from 'react';
-import Button from '../components/Button';
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import "./Login.css";
 
-export default function Login({ onLogin }) {
-    const [username, setUsername] = useState('');
-    const [password, setPassword] = useState('');
-    const [error, setError] = useState('');
+const Login = () => {
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
+    const [error, setError] = useState("");
+    const navigate = useNavigate();
 
     const handleLogin = () => {
-        // Hardcoded credentials check
-        if (username === 'sayeed' && password === '1234') {
-            onLogin(); // Call the login callback passed as a prop
+        if (username === "sayeed" && password === "1234") {
+            // Navigate to the Employee List page on successful login
+            navigate("/list");
         } else {
-            setError('Invalid credentials. Please try again.');
+            setError("Invalid username or password. Please try again.");
         }
     };
 
     return (
-        <div style={{ textAlign: 'center', marginTop: '50px' }}>
+        <div className="login-container">
             <h2>Login</h2>
             <div>
-                <label>
-                    Username:
-                    <input
-                        type="text"
-                        value={username}
-                        onChange={(e) => setUsername(e.target.value)}
-                        placeholder="Enter username"
-                    />
-                </label>
+                <label>Username</label>
+                <input
+                    type="text"
+                    value={username}
+                    onChange={(e) => setUsername(e.target.value)}
+                />
             </div>
-            <div style={{ marginTop: '10px' }}>
-                <label>
-                    Password:
-                    <input
-                        type="password"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                        placeholder="Enter password"
-                    />
-                </label>
+            <div>
+                <label>Password</label>
+                <input
+                    type="password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                />
             </div>
-            <div style={{ marginTop: '10px' }}>
-                <Button onClick={handleLogin} text="Login" />
-            </div>
-            {error && <p style={{ color: 'red', marginTop: '10px' }}>{error}</p>}
+            <button onClick={handleLogin}>Login</button>
+            {error && <p className="error">{error}</p>}
         </div>
     );
-}
+};
+
+export default Login;
