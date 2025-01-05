@@ -102,34 +102,40 @@ export default function Employee({
             <img src={`https://robohash.org/${id}?set=set5`} alt="" />
             <h2>Name: {name}</h2>
             {toggleFormEdit ? (
-                <div>
-                    <label>
-                        Role:
-                        <input
-                            type="text"
-                            name="role"
-                            value={formData.role}
-                            onChange={handleInputChange}
-                        />
-                    </label>
-                    <label>
-                        Department:
-                        <input
-                            type="text"
-                            name="department"
-                            value={formData.department}
-                            onChange={handleInputChange}
-                        />
-                    </label>
-                    <label>
-                        Location:
-                        <input
-                            type="text"
-                            name="location"
-                            value={formData.location}
-                            onChange={handleInputChange}
-                        />
-                    </label>
+                <div className='form-body'>
+                    <div className='form-line'>
+                        <label>
+                            Role:
+                            <input
+                                type="text"
+                                name="role"
+                                value={formData.role}
+                                onChange={handleInputChange}
+                            />
+                        </label>
+                    </div>
+                    <div className='form-line'>
+                        <label>
+                            Department:
+                            <input
+                                type="text"
+                                name="department"
+                                value={formData.department}
+                                onChange={handleInputChange}
+                            />
+                        </label>
+                    </div>
+                    <div className='form-line'>
+                        <label>
+                            Location:
+                            <input
+                                type="text"
+                                name="location"
+                                value={formData.location}
+                                onChange={handleInputChange}
+                            />
+                        </label>
+                    </div>
                 </div>
             ) : (
                 <div>
@@ -154,7 +160,7 @@ export default function Employee({
             />
             <Button onClick={clickHandler} text={buttonText} role={buttonRole} />
 
-            <Button text="See More" onClick={handleSeeMore} role="secondary" />
+            <Button text="See More" onClick={handleSeeMore} role="seemore" />
 
             {/* Reminder Button with Custom Tooltip */}
             <div
@@ -173,8 +179,7 @@ export default function Employee({
                         className="tooltip"
                         style={{
                             position: 'absolute',
-                            top: '-140px',
-                            left: '-50px',
+                            top: '-160px',
                             backgroundColor: 'rgba(0, 0, 0, 0.8)',
                             color: 'white',
                             padding: '10px',
