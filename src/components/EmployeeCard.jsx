@@ -139,7 +139,7 @@ export default function Employee({
                 </div>
             )}
             <p>Start Date: {startDate}</p>
-            {isPromoted ? <p><img className="star" src='src/components/star.png' alt="star icon" /></p> : <p></p>}
+            {isPromoted ? <p><img className="star" src='https://i.ibb.co/QHk0Q2V/star.png' alt="star icon" /></p> : <p></p>}
 
             {/* Edit Button */}
             <Button

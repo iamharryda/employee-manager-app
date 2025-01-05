@@ -1,21 +1,19 @@
 import { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import Button from './Button';
-import './SinglePage.css';
+import styles from './SinglePage.module.css'; // Import CSS Module
 
 const SinglePage = () => {
-    const { id } = useParams(); // Get the ID from the route parameters
-    const [employee, setEmployee] = useState(null); // Employee state
-    const [loading, setLoading] = useState(true); // Loading state
+    const { id } = useParams();
+    const [employee, setEmployee] = useState(null);
+    const [loading, setLoading] = useState(true);
     const navigate = useNavigate();
 
-    // Fetch employee details
     useEffect(() => {
         axios
             .get(`http://localhost:3002/persons/${id}`)
             .then((response) => {
-                setEmployee(response.data); // Set employee data
+                setEmployee(response.data);
                 setLoading(false);
             })
             .catch((error) => {
@@ -24,34 +22,35 @@ const SinglePage = () => {
             });
     }, [id]);
 
-    if (loading) return <p>Loading...</p>; // Show loading state while fetching
-
-    if (!employee) return <p>Employee not found.</p>; // Handle invalid or missing employee
+    if (loading) return <p>Loading...</p>;
+    if (!employee) return <p>Employee not found.</p>;
 
     return (
-        <div className="single-page">
+        <div className={styles.singlePage}>
             <h1>Employee Details</h1>
-            <div className="employee-details">
+            <div className={styles.employeeDetails}>
                 <img
                     src={`https://robohash.org/${employee.id}?set=set5`}
                     alt={employee.name}
-                    className="employee-image"
+                    className={styles.employeeImage}
                 />
-                <h2>{employee.name}</h2>
-                <p>
-                    <strong>Role:</strong> {employee.role || 'N/A'}
-                </p>
-                <p>
-                    <strong>Department:</strong> {employee.department || 'N/A'}
-                </p>
-                <p>
-                    <strong>Location:</strong> {employee.location || 'N/A'}
-                </p>
-                <p>
-                    <strong>Start Date:</strong> {employee.startDate || 'N/A'}
-                </p>
+                <h2 className={styles.employeeName}>{employee.name}</h2>
+
+                <p className={styles.employeeInfo}><strong className={styles.infoLabel}>Role:</strong> {employee.role || 'N/A'}</p>
+                <p className={styles.employeeInfo}><strong className={styles.infoLabel}>Department:</strong> {employee.department || 'N/A'}</p>
+                <p className={styles.employeeInfo}><strong className={styles.infoLabel}>Location:</strong> {employee.location || 'N/A'}</p>
+                <p className={styles.employeeInfo}><strong className={styles.infoLabel}>Start Date:</strong> {employee.startDate || 'N/A'}</p>
+                <p className={styles.employeeInfo}><strong className={styles.infoLabel}>Email:</strong> {employee.email || 'N/A'}</p>
+                <p className={styles.employeeInfo}><strong className={styles.infoLabel}>Phone:</strong> {employee.phone || 'N/A'}</p>
+                <p className={styles.employeeInfo}><strong className={styles.infoLabel}>Skills:</strong> {employee.skills ? employee.skills.join(', ') : 'N/A'}</p>
+                <p className={styles.employeeInfo}><strong className={styles.infoLabel}>Experience:</strong> {employee.experience ? `${employee.experience} years` : 'N/A'}</p>
+                <p className={styles.employeeInfo}><strong className={styles.infoLabel}>Education:</strong> {employee.education || 'N/A'}</p>
+                <p className={styles.employeeInfo}><strong className={styles.infoLabel}>LinkedIn:</strong> {employee.linkedin ? <a href={employee.linkedin} className={styles.employeeLink} target="_blank" rel="noopener noreferrer">{employee.linkedin}</a> : 'N/A'}</p>
+
+                <button className={styles.button} onClick={() => navigate('/list')}>
+                    Back to Dashboard
+                </button>
             </div>
-            <Button onClick={() => navigate('/list')} text="Back to Dashboard" />
         </div>
     );
 };

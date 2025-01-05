@@ -7,7 +7,16 @@
       "department": "Engineering",
       "startDate": "2020-01-15",
       "location": "New York",
-      "email": "1@gmail.com"
+      "email": "1@gmail.com",
+      "phone": "+1-555-1234",
+      "skills": [
+        "JavaScript",
+        "React",
+        "Node.js"
+      ],
+      "experience": 5,
+      "education": "B.Sc. in Computer Science",
+      "linkedin": "linkedin.com/in/johndoe"
     },
     {
       "id": "2",
@@ -15,7 +24,17 @@
       "role": "Web Developer",
       "department": "Creative",
       "startDate": "2019-03-22",
-      "location": "San Francisco"
+      "location": "San Francisco",
+      "email": "jane.smith@email.com",
+      "phone": "+1-555-5678",
+      "skills": [
+        "HTML",
+        "CSS",
+        "Photoshop"
+      ],
+      "experience": 4,
+      "education": "B.A. in Graphic Design",
+      "linkedin": "linkedin.com/in/janesmith"
     },
     {
       "id": "3",
@@ -23,7 +42,17 @@
       "role": "Team Lead",
       "department": "Operations",
       "startDate": "2018-06-30",
-      "location": "Chicago"
+      "location": "Chicago",
+      "email": "michael.j@email.com",
+      "phone": "+1-555-6789",
+      "skills": [
+        "Leadership",
+        "Project Management",
+        "Scrum"
+      ],
+      "experience": 10,
+      "education": "M.B.A.",
+      "linkedin": "linkedin.com/in/michaeljohnson"
     },
     {
       "id": "4",
@@ -31,7 +60,17 @@
       "role": "Game Developer",
       "department": "Finance",
       "startDate": "2021-02-10",
-      "location": "Boston"
+      "location": "Boston",
+      "email": "emily.d@email.com",
+      "phone": "+1-555-8901",
+      "skills": [
+        "Unity",
+        "C#",
+        "Game Design"
+      ],
+      "experience": 3,
+      "education": "B.Sc. in Game Development",
+      "linkedin": "linkedin.com/in/emilydavis"
     },
     {
       "id": "5",
@@ -39,7 +78,17 @@
       "role": "Web Developer",
       "department": "Customer Service",
       "startDate": "2020-11-05",
-      "location": "Los Angeles"
+      "location": "Los Angeles",
+      "email": "chris.b@email.com",
+      "phone": "+1-555-2345",
+      "skills": [
+        "JavaScript",
+        "Vue.js",
+        "Node.js"
+      ],
+      "experience": 5,
+      "education": "B.Sc. in Software Engineering",
+      "linkedin": "linkedin.com/in/chrisbrown"
     },
     {
       "id": "6",
@@ -47,7 +96,17 @@
       "role": "Game Developer",
       "department": "IT",
       "startDate": "2017-09-12",
-      "location": "Seattle"
+      "location": "Seattle",
+      "email": "sarah.w@email.com",
+      "phone": "+1-555-3456",
+      "skills": [
+        "Game Physics",
+        "AI Programming",
+        "C++"
+      ],
+      "experience": 7,
+      "education": "M.Sc. in Computer Science",
+      "linkedin": "linkedin.com/in/sarahwilson"
     },
     {
       "id": "7",
@@ -55,7 +114,17 @@
       "role": "Web Developer",
       "department": "Marketing",
       "startDate": "2019-05-18",
-      "location": "Miami"
+      "location": "Miami",
+      "email": "david.m@email.com",
+      "phone": "+1-555-4567",
+      "skills": [
+        "SEO",
+        "WordPress",
+        "Google Analytics"
+      ],
+      "experience": 4,
+      "education": "B.A. in Digital Marketing",
+      "linkedin": "linkedin.com/in/davidmartinez"
     },
     {
       "id": "8",
@@ -63,7 +132,17 @@
       "role": "Web Developer",
       "department": "Human Resources",
       "startDate": "2022-04-25",
-      "location": "Austin"
+      "location": "Austin",
+      "email": "laura.g@email.com",
+      "phone": "+1-555-5678",
+      "skills": [
+        "HR Systems",
+        "Python",
+        "Automation"
+      ],
+      "experience": 2,
+      "education": "B.A. in Human Resources",
+      "linkedin": "linkedin.com/in/lauragarcia"
     },
     {
       "id": "9",
@@ -71,7 +150,17 @@
       "role": "Game Developer",
       "department": "Development",
       "startDate": "2023-01-10",
-      "location": "Denver"
+      "location": "Denver",
+      "email": "daniel.l@email.com",
+      "phone": "+1-555-6789",
+      "skills": [
+        "Game Mechanics",
+        "Graphics Programming",
+        "Unreal Engine"
+      ],
+      "experience": 1,
+      "education": "B.Sc. in Game Development",
+      "linkedin": "linkedin.com/in/daniellee"
     },
     {
       "id": "10",
@@ -79,7 +168,17 @@
       "role": "Web Developer",
       "department": "Administration",
       "startDate": "2021-07-19",
-      "location": "Philadelphia"
+      "location": "Philadelphia",
+      "email": "sophia.k@email.com",
+      "phone": "+1-555-7890",
+      "skills": [
+        "Administration Systems",
+        "Python",
+        "Data Analysis"
+      ],
+      "experience": 3,
+      "education": "B.Sc. in Information Systems",
+      "linkedin": "linkedin.com/in/sophiakim"
     },
     {
       "id": "11",
@@ -87,7 +186,17 @@
       "role": "Web Developer",
       "department": "Engineering",
       "startDate": "",
-      "location": "New York"
+      "location": "New York",
+      "email": "sayeed.anwar@email.com",
+      "phone": "+1-555-1234",
+      "skills": [
+        "JavaScript",
+        "React",
+        "Node.js"
+      ],
+      "experience": 6,
+      "education": "B.Sc. in Computer Science",
+      "linkedin": "linkedin.com/in/sayeedanwar"
     },
     {
       "id": "ad36",
@@ -95,15 +204,77 @@
       "role": "Web Developer",
       "department": "Creative",
       "startDate": "4444-04-04",
-      "location": "Helsinki"
+      "location": "Helsinki",
+      "email": "sayeed.anwar2@email.com",
+      "phone": "+1-555-2345",
+      "skills": [
+        "Adobe XD",
+        "UI/UX Design",
+        "Frontend Development"
+      ],
+      "experience": 5,
+      "education": "B.A. in Graphic Design",
+      "linkedin": "linkedin.com/in/sayeedanwar2"
     },
     {
       "id": "e213",
-      "name": "Anu kc",
-      "role": "manager",
-      "department": "it",
+      "name": "Anu Kc",
+      "role": "Manager",
+      "department": "IT",
       "startDate": "2024-12-17",
-      "location": "Helsinki"
+      "location": "Helsinki",
+      "email": "anu.kc@email.com",
+      "phone": "+1-555-3456",
+      "skills": [
+        "IT Management",
+        "Security",
+        "System Administration"
+      ],
+      "experience": 10,
+      "education": "M.Sc. in Information Technology",
+      "linkedin": "linkedin.com/in/anukc"
+    },
+    {
+      "id": "a9c3",
+      "name": "sayeed.anwar",
+      "role": "",
+      "department": "",
+      "startDate": "",
+      "location": "",
+      "email": "sayeedanwar@protonmail.com",
+      "phone": "0451453280",
+      "skills": "",
+      "experience": "",
+      "education": "",
+      "linkedin": ""
+    },
+    {
+      "id": "1153",
+      "name": "sayeed.anwar",
+      "role": "",
+      "department": "",
+      "startDate": "",
+      "location": "",
+      "email": "sayeedanwar@protonmail.com",
+      "phone": "0451453280",
+      "skills": "",
+      "experience": "5",
+      "education": "hsc",
+      "linkedin": "hhh"
+    },
+    {
+      "id": "2b4c",
+      "name": "sayeed.anwar",
+      "role": "",
+      "department": "",
+      "startDate": "",
+      "location": "",
+      "email": "sayeedanwar@protonmail.com",
+      "phone": "0451453280",
+      "skills": "",
+      "experience": "",
+      "education": "",
+      "linkedin": ""
     }
   ],
   "comments": [

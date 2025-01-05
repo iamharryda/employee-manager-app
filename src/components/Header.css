@@ -12,6 +12,10 @@
     z-index: 1000;
 }
 
+nav{
+    display: flex;
+}
+
 .header h1 {
     margin: 0;
     font-size: 1.8rem;
@@ -29,6 +33,11 @@
 
 .header nav ul li {
     display: inline;
+    padding-top: 30px;
+}
+
+.header nav ul{
+    padding-right: 30px;
 }
 
 .header nav ul li a {

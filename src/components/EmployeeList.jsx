@@ -36,7 +36,9 @@ export default function EmployeeList() {
     return (
         <div>
             <div>
-                <h2>Employee Dashboard</h2>
+                <div className='headder'>
+                    <h2>Employee Dashboard</h2>
+                </div>
                 <div className="list">
                     {isLoading ? (
                         <p>Loading......</p>
@@ -56,9 +58,7 @@ export default function EmployeeList() {
                         ))
                     )}
                 </div>
-                <div style={{ marginTop: '10px' }}>
-                    <Button onClick={() => navigate('/')} text="Log Out" />
-                </div>
+
             </div>
         </div>
     );

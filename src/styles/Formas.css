@@ -1,12 +1,20 @@
 .form-item{
     display: flex;
     justify-content: space-between;
-    width: 40vw;
+    width: 50vw;
     margin: 20px;
 }
 
+
+
 .form-item input{
     width: 80%;
+    padding: 10px;
+}
+
+.form-item select{
+    width: 80%;
+    padding: 10px;
 }
 
 form{
@@ -16,3 +24,15 @@ form{
     justify-content: center;
 
 }
+
+.headerr{
+    display: flex;
+    justify-content: center;
+}
+
+.whole-page{
+    margin-bottom: 5vw;
+}
+
+
+
