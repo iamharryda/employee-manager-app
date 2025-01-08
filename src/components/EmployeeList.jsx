@@ -13,7 +13,7 @@ export default function EmployeeList() {
     // Fetch data from the backend
     useEffect(() => {
         axios
-            .get('http://localhost:3002/persons')
+            .get('https://ema-backend-8pi4.onrender.com/api/persons')
             .then((response) => {
                 setPersons(response.data);
             })

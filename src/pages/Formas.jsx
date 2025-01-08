@@ -58,7 +58,7 @@ export const Formas = () => {
         const newEmployee = { ...formData };
 
         axios
-            .post(`http://localhost:3002/persons`, newEmployee)
+            .post(`https://ema-backend-8pi4.onrender.com/api/persons`, newEmployee)
             .then((res) => {
                 console.log("Form submitted successfully:", res.data);
                 setSuccess("Employee added successfully!");

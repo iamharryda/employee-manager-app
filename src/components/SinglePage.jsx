@@ -11,7 +11,7 @@ const SinglePage = () => {
 
     useEffect(() => {
         axios
-            .get(`http://localhost:3002/persons/${id}`)
+            .get(`https://ema-backend-8pi4.onrender.com/api/persons/${id}`)
             .then((response) => {
                 setEmployee(response.data);
                 setLoading(false);
