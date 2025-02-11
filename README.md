@@ -12,4 +12,6 @@ The app has a dashboard having some informations of each employees
 1. It displays the list
 1. You can promote or demote any employee
 
+for testing purpose
+
 
