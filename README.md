@@ -9,8 +9,5 @@ The app has a dashboard having some informations of each employees
 1. It displays the list
 1. You can promote or demote any employee
 
-## What I learned today(30.10)
-
-- using UseState more concisely
-- eventHandling more concisely
-- Learnt about EsLint
+# badges
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=iamharryda_employee-manager-app&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=iamharryda_employee-manager-app)
